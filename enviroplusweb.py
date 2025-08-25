@@ -4,7 +4,7 @@
 Project: Enviro Plus Web
 Description: Web interface for Enviro and Enviro+ sensor board plugged into a Raspberry Pi
 Author: i.j
-Version: 4.1.0
+Version: 4.1.1
 URL: https://gitlab.com/idotj/enviroplusweb
 License: GNU
 """
@@ -20,8 +20,10 @@ from enviroplus.noise import Noise
 from enviroplus import gas
 from bme280 import BME280
 from smbus2 import SMBus
+
 try:
     from ltr559 import LTR559
+
     ltr559 = LTR559()
 except ImportError:
     import ltr559
@@ -38,7 +40,7 @@ from config import Config
 
 print("")
 print("************************")
-print(" Enviro plus web v4.1.0 ")
+print(" Enviro plus web v4.1.1 ")
 print("************************")
 print("")
 
@@ -91,7 +93,12 @@ if Config.FAN_GPIO_ENABLED:
 if Config.LCD_SCREEN_ENABLED:
     logging.debug("Setting up LCD Screen")
     disp = st7735.ST7735(
-      port=0, cs=1, dc="GPIO9", backlight="GPIO12", rotation=270, spi_speed_hz=10000000
+        port=0,
+        cs=1,
+        dc="GPIO9",
+        backlight="GPIO12",
+        rotation=270,
+        spi_speed_hz=10000000,
     )
 
     disp.begin()
@@ -222,7 +229,8 @@ def fetch_weather_data(url):
             return response.json()
         else:
             logging.error(
-                f"Error fetching weather API data: {response.status_code}")
+                f"Error fetching weather API data: {response.status_code}"
+            )
             return {"error": f"Received error code {response.status_code}"}
 
     except requests.exceptions.Timeout:
@@ -320,8 +328,9 @@ def get_particles_readings():
             particles = pms5003.read()
             break
         except (RuntimeError, struct.error) as e:
-            logging.error("Particle read failed: %s - %s",
-                          type(e).__name__, str(e))
+            logging.error(
+                "Particle read failed: %s - %s", type(e).__name__, str(e)
+            )
             if not run_flag:
                 raise e
             pms5003.reset()
@@ -382,7 +391,8 @@ def save_readings_file():
                         data = [current_readings]
                 except json.JSONDecodeError:
                     logging.error(
-                        f"⚠️ Warning: Corrupt file detected, resetting {file_path}")
+                        f"⚠️ Warning: Corrupt file detected, resetting {file_path}"
+                    )
                     data = [current_readings]
 
                 f.seek(0)
@@ -418,7 +428,7 @@ def load_downsample_readings(arg):
         past_time = now - timedelta(days=365)
         max_readings = 192
     else:
-        return '[{}]'
+        return "[{}]"
 
     readings = []
     past_timestamp = past_time.timestamp()
@@ -427,15 +437,20 @@ def load_downsample_readings(arg):
 
     for file_date in files_to_check:
         file_path = os.path.join(
-            app_data_folder, file_date.strftime("%Y-%m-%d.json"))
+            app_data_folder, file_date.strftime("%Y-%m-%d.json")
+        )
 
         if os.path.exists(file_path):
             with open(file_path, "r", encoding="utf-8") as f:
                 try:
                     data = json.load(f)
                     day_readings = [
-                        entry for entry in data
-                        if datetime.strptime(entry["time"], "%a %b %d %H:%M:%S %Y").timestamp() >= past_timestamp
+                        entry
+                        for entry in data
+                        if datetime.strptime(
+                            entry["time"], "%a %b %d %H:%M:%S %Y"
+                        ).timestamp()
+                        >= past_timestamp
                     ]
 
                     readings.extend(day_readings)
@@ -443,8 +458,9 @@ def load_downsample_readings(arg):
                 except json.JSONDecodeError:
                     logging.error(f"Error reading {file_path}, skipping")
 
-    readings.sort(key=lambda x: datetime.strptime(
-        x["time"], "%a %b %d %H:%M:%S %Y"))
+    readings.sort(
+        key=lambda x: datetime.strptime(x["time"], "%a %b %d %H:%M:%S %Y")
+    )
 
     # Downsample if max_readings is set
     if max_readings and len(readings) > max_readings:
@@ -458,11 +474,9 @@ def set_next_save_readings():
     global next_save_time
     next_save_time = datetime.now().replace(second=0, microsecond=0)
     if datetime.now().minute < save_readings_interval:
-        next_save_time = next_save_time.replace(
-            minute=save_readings_interval)
+        next_save_time = next_save_time.replace(minute=save_readings_interval)
     else:
-        next_save_time = next_save_time.replace(
-            minute=0) + timedelta(hours=1)
+        next_save_time = next_save_time.replace(minute=0) + timedelta(hours=1)
 
 
 def check_next_save_readings():
@@ -499,7 +513,8 @@ def init_app():
     load_languages()
     background_thread.start()
     logging.debug(
-        f"Background thread started with a loop interval of {idle_time} seconds")
+        f"Background thread started with a loop interval of {idle_time} seconds"
+    )
 
 
 def kill_app():
