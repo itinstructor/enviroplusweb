@@ -1,0 +1,14 @@
+[Unit]
+Description=Enviroplus Web Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /path/to/enviroplusweb.py
+WorkingDirectory=/path/to/
+Restart=on-failure
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+
