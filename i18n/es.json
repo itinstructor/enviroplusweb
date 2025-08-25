@@ -1,0 +1,48 @@
+{
+  "i18n": {
+    "languageCode": "es",
+    "languageDir": "ltr",
+    "timeRange": {
+      "title": "Intervalo de tiempo",
+      "day": "1 día",
+      "week": "1 semana",
+      "month": "1 mes",
+      "year": "1 año"
+    },
+    "fanTitle": "Potencia del ventilador",
+    "language": {
+      "title": "Seleccionar idioma",
+      "german": "Alemán",
+      "catalan": "Catalán",
+      "spanish": "Español",
+      "french": "Francés",
+      "dutch": "Holandés",
+      "english": "Inglés"
+    },
+    "switchThemeBtn": {
+      "titleLight": "Tema claro",
+      "titleDark": "Tema oscuro"
+    },
+    "gitlabBtn": {
+      "title": "Enviro Plus Web repo en GitLab"
+    },
+    "menuBtn": {
+      "title": "Abrir/cerrar el menú principal"
+    },
+    "temperature": "Temperatura",
+    "humidity": "Humedad",
+    "pressure": "Presión",
+    "light": "Luz",
+    "wind": {
+      "direction": "Direccion del viento",
+      "north": "N",
+      "east": "E",
+      "south": "S",
+      "west": "O",
+      "speed": "Velocidad del viento"
+    },
+    "noise": "Ruido",
+    "gas": "Gases",
+    "particulateMatter": "Partículas en suspensión"
+  }
+}

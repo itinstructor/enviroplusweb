@@ -1,0 +1,48 @@
+{
+  "i18n": {
+    "languageCode": "nl",
+    "languageDir": "ltr",
+    "timeRange": {
+      "title": "Tijdsspanne",
+      "day": "1 dag",
+      "week": "1 week",
+      "month": "1 maand",
+      "year": "1 jaar"
+    },
+    "fanTitle": "Ventilatorvermogen",
+    "language": {
+      "title": "Selecteer taal",
+      "catalan": "Catalaans",
+      "german": "Duits",
+      "english": "Engels",
+      "french": "Frans",
+      "dutch": "Nederlands",
+      "spanish": "Spaans"
+    },
+    "switchThemeBtn": {
+      "titleLight": "Licht thema",
+      "titleDark": "Donker thema"
+    },
+    "gitlabBtn": {
+      "title": "Enviro Plus Web repo in GitLab"
+    },
+    "menuBtn": {
+      "title": "Toggle hoofdmenu"
+    },
+    "temperature": "Temperatuur",
+    "humidity": "Luchtvochtigheid",
+    "pressure": "Luchtdruk",
+    "light": "Lichtintensiteit",
+    "wind": {
+      "direction": "Windrichting",
+      "north": "N",
+      "east": "O",
+      "south": "Z",
+      "west": "W",
+      "speed": "Windsnelheid"
+    },
+    "noise": "Geluid",
+    "gas": "Gassen",
+    "particulateMatter": "Fijnstof"
+  }
+}

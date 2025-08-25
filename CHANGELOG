@@ -1,0 +1,94 @@
+v4.1.0 - 15/08/2025
+- Show barometric pressure in "inHg" for imperial system
+- Add compensation factor for barometric pressure sensor
+- Improve temperature and pressure ranges in charts
+- Update Chart.js (4.5.0)
+
+v4.0.3 - 02/08/2025
+- Improve error handler for PMS5003 sensor
+
+v4.0.2 - 17/05/2025
+- Improve LCD screen readings method
+- Update Chart.js (4.4.9)
+- Update documentation
+
+v4.0.1 - 01/05/2025
+- Fix bug when readings are saved in a new folder/day that causes graph chart to overlap
+- Rewrite core functions for save and load readings
+- Change data json file name format
+- Improve json files management
+- Improve performance
+- Better logging messages/info
+- LCD screen now shows readings after first install
+- Update Chart.js (4.4.8)
+
+v3.2.0 - 24/02/2025
+Fix webmanifest path for icons
+Add loader spinner if Time range change
+JS refactoring
+
+v3.0.3 - 11/01/2025
+- Fix JS error when Openweather is not enabled
+- Fix time range error if data has 'None' values
+- Add missing import for LCD screen (ST7735)
+
+v3.0.0 - 04/01/2025
+- Update and improve documentation
+- Add JSON file extension to data readings
+- Update Chart.js (4.4.7)
+- Improve Chart tooltip font size
+- Add config.py file for settings
+- Add error pages
+- Multilanguage support (Ca, En, Fr, De, Es, Nl)
+- Fix responsive behaviour
+- Refactor color theme switch
+- Add OpenWeather support
+- Add wind speed and direction information (from OpenWeather)
+- Improve performance
+
+v2.7.3 - 16/11/2024
+- Add changelog + version numbers
+
+v2.7.2 - 29/10/2024
+- Enable/Disable CPU temperature compensation
+
+v2.7.0 - 07/10/2024
+- Fix CPU temperature compensation
+
+v2.6.0 - 27/09/2024
+- Fix screen resize problem in touch devices
+
+v2.5.0 - 16/09/2024
+- Improve performance
+
+v2.4.0 - 17/08/2024
+- Fix Chart.js bug
+- Add variable threshold for the PM chart
+- Rename PM variables
+
+v2.3.0 - 15/07/2024
+- Increase the maximum threshold of the noise graph
+- Fix graph monotony
+
+v2.2.1 - 09/07/2024
+- Update documentation
+
+v2.2.0 - 18/06/2024
+- Fix Gas Label Colors
+- Fix gas min/max values
+
+v2.1.0 - 11/04/2024
+- Add loader spinner
+- Update documentation
+
+v2.0.4 - 26/08/2023
+- Add noise chart/graph
+- Update chart.js library
+- Update documentation
+
+v1.0.0 (legacy) - 05/03/2022
+- First commit (fork from https://github.com/nophead/EnviroPlusWeb)
+- Improve color readings
+- Add light/dark theme
+- Develop responsive support for small screen resolutions
+- Refactoring HTML/CSS/JS code
