@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Name: pressure_comp.py
+Name: press_comp_calc.py
 Author: William A Loring
 Created: 08/25/25
 Purpose: Calculate pressure compensation for EnviroPi
