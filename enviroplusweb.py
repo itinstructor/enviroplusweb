@@ -4,7 +4,7 @@
 Project: Enviro Plus Web
 Description: Web interface for Enviro and Enviro+ sensor board plugged into a Raspberry Pi
 Author: i.j
-Version: 4.1.1
+Version: 4.1.2
 URL: https://gitlab.com/idotj/enviroplusweb
 License: GNU
 """
@@ -40,7 +40,7 @@ from config import Config
 
 print("")
 print("************************")
-print(" Enviro plus web v4.1.1 ")
+print(" Enviro plus web v4.1.2 ")
 print("************************")
 print("")
 
