@@ -1,0 +1,16 @@
+[Unit]
+Description=Enviroplus Web Service
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/home/pi/.virtualenvs/enviroplusweb/bin/python /home/pi/enviroplusweb/enviroplusweb.py
+WorkingDirectory=/home/pi/enviroplusweb/
+Restart=on-failure
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+

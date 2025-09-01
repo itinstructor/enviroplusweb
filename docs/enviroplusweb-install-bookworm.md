@@ -143,7 +143,7 @@ Open the file `config.py` in the folder `enviroplusweb`. You will find the follo
   HUMI_COMPENSATION_FACTOR = 1.40
   ```
 
-- Modifies the sum factor on the values read by the barometric pressure sensor:
+- Modifies the sum factor on the values read by the barometric pressure sensor. pres_comp_calc.py will calculate the factor based on altitude:
 
   ```python
   PRES_COMPENSATION_FACTOR = 0.00
@@ -237,4 +237,20 @@ Add a new entry at the bottom with `@reboot` to specify that you want to run the
 
 ```terminal
 @reboot sleep 20 && /bin/bash -c 'cd /home/pi/enviroplusweb && source ~/.virtualenvs/enviroplusweb/bin/activate && sudo ~/.virtualenvs/enviroplusweb/bin/python /home/pi/enviroplusweb/enviroplusweb.py >> /home/pi/enviroplusweb/enviroplusweb.log 2>&1'
+```
+
+### Run as Service
+
+You can run enviroplusweb as a service that automatically starts on reboot.
+
+Install enviroplusweb service:
+
+```terminal
+sudo bash install-service.sh
+```
+
+Uninstall enviroplusweb service:
+
+```terminal
+sudo bash uninstall-service.sh
 ```

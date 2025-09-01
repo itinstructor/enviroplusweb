@@ -22,7 +22,7 @@ env.bak/
 venv.bak/
 
 # Logs
-# enviroplusweb.log
+enviroplusweb.log
 
 # Config
 # config.py
