@@ -209,6 +209,18 @@ Open the file `config.py` in the folder `enviroplusweb`. You will find the follo
   DEBUG_LOGGING_ENABLED = False
   ```
 
+- Enable/Disable Reboot button in web ui
+  
+  ```python
+  REBOOT_BUTTON_ENABLED = True
+  ```
+
+- Enable/Disable Shutdown button in web ui
+
+  ```python
+  SHUTDOWN_BUTTON_ENABLED = True
+  ```
+
 ### Run
 
 To run the app, be sure to be in the folder `enviroplusweb` and type:
