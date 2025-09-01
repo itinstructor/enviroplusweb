@@ -258,17 +258,35 @@
             </svg>
           </a>
         </div>
-        {% if shutdown_button %}
-        <!-- Shutdown Button -->
-        <div class="header-shutdown" style="margin-left:auto;">
-          <form method="POST" action="/shutdown" style="display:inline;">
-            <button type="submit" id="btnShutdown" title="{{ i18n.shutdownBtn.title }}">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="button-icon-svg">
-                <path d="M8 1a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-1.5 0v-6.5A.75.75 0 0 1 8 1zm0 13a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0 1A7 7 0 1 1 8 0a7 7 0 0 1 0 14z"/>
-              </svg>
-              <span>{{ i18n.shutdownBtn.title }}</span>
-            </button>
-          </form>
+        {% if reboot_button or shutdown_button %}
+        <div style="display: flex; margin-left: auto; gap: 1rem;">
+          {% if reboot_button %}
+          <!-- Reboot Button -->
+          <div class="header-reboot">
+            <form method="POST" action="/reboot" style="display:inline;">
+              <button type="submit" id="btnReboot" title="{{ i18n.rebootBtn.title }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="button-icon-svg">
+                  <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                </svg>
+                <span>{{ i18n.rebootBtn.title }}</span>
+              </button>
+            </form>
+          </div>
+          {% endif %}
+          {% if shutdown_button %}
+          <!-- Shutdown Button -->
+          <div class="header-shutdown">
+            <form method="POST" action="/shutdown" style="display:inline;">
+              <button type="submit" id="btnShutdown" title="{{ i18n.shutdownBtn.title }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="button-icon-svg">
+                  <path d="M8 1a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-1.5 0v-6.5A.75.75 0 0 1 8 1zm0 13a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0 1A7 7 0 1 1 8 0a7 7 0 0 1 0 14z"/>
+                </svg>
+                <span>{{ i18n.shutdownBtn.title }}</span>
+              </button>
+            </form>
+          </div>
+          {% endif %}
         </div>
         {% endif %}
       </div>

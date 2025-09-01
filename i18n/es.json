@@ -44,6 +44,7 @@
     "noise": "Ruido",
     "gas": "Gases",
     "particulateMatter": "Partículas en suspensión",
+    "rebootBtn": { "title": "Reiniciar" },
     "shutdownBtn": { "title": "Apagar" }
   }
 }

@@ -556,6 +556,7 @@ def main_page(language):
         system_units=Config.SYSTEM_UNITS,
         browser_updates=Config.BROWSER_UPDATES_WHILE_ACTIVE,
         openweather=Config.OPENWEATHER_ENABLED,
+        reboot_button=Config.REBOOT_BUTTON_ENABLED,  # This controls reboot button visibility
         shutdown_button=Config.SHUTDOWN_BUTTON_ENABLED,  # This controls button visibility
     )
 
@@ -572,6 +573,17 @@ def readings():
 def graph():
     arg = request.args.get("time", "")
     return load_downsample_readings(arg)
+
+
+@app.route("/reboot", methods=["POST"])
+def reboot():
+    import subprocess
+
+    try:
+        subprocess.Popen(["sudo", "reboot"])
+        return "<html><body><h2>Rebooting...</h2></body></html>"
+    except Exception as e:
+        return f"<html><body><h2>Reboot failed: {e}</h2></body></html>", 500
 
 
 @app.route("/shutdown", methods=["POST"])

@@ -1,5 +1,5 @@
 v4.1.2 - 31-08-25
-- Add shutdown button to webpage to shutdown the pi
+- Add shutdown and restart button to webpage
 
 v4.1.1 - 24-08-25
 - Add pres_comp_calc.py for calculating altitude compensation

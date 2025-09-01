@@ -32,5 +32,7 @@ class Config:
     OPENWEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather"
     OPENWEATHER_CALL_INTERVAL = 600
     DEBUG_LOGGING_ENABLED = False
+    # Show reboot button in web UI
+    REBOOT_BUTTON_ENABLED = True
     # Show shutdown button in web UI
     SHUTDOWN_BUTTON_ENABLED = True

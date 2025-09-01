@@ -44,6 +44,7 @@
     "noise": "Geluid",
     "gas": "Gassen",
     "particulateMatter": "Fijnstof",
+    "rebootBtn": { "title": "Herstart" },
     "shutdownBtn": { "title": "Afsluiten" }
   }
 }
