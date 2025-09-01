@@ -4,7 +4,7 @@
 Project: Enviro Plus Web
 Description: Web interface for Enviro and Enviro+ sensor board plugged into a Raspberry Pi
 Author: i.j
-Version: 4.0.2
+Version: 4.1.2
 URL: https://gitlab.com/idotj/enviroplusweb
 License: GNU
 """
@@ -32,3 +32,5 @@ class Config:
     OPENWEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather"
     OPENWEATHER_CALL_INTERVAL = 600
     DEBUG_LOGGING_ENABLED = False
+    # Show shutdown button in web UI
+    SHUTDOWN_BUTTON_ENABLED = True

@@ -556,6 +556,7 @@ def main_page(language):
         system_units=Config.SYSTEM_UNITS,
         browser_updates=Config.BROWSER_UPDATES_WHILE_ACTIVE,
         openweather=Config.OPENWEATHER_ENABLED,
+        shutdown_button=Config.SHUTDOWN_BUTTON_ENABLED,  # This controls button visibility
     )
 
 
@@ -571,6 +572,17 @@ def readings():
 def graph():
     arg = request.args.get("time", "")
     return load_downsample_readings(arg)
+
+
+@app.route("/shutdown", methods=["POST"])
+def shutdown():
+    import subprocess
+
+    try:
+        subprocess.Popen(["sudo", "shutdown", "now"])
+        return "<html><body><h2>Shutting down...</h2></body></html>"
+    except Exception as e:
+        return f"<html><body><h2>Shutdown failed: {e}</h2></body></html>", 500
 
 
 @app.errorhandler(401)
