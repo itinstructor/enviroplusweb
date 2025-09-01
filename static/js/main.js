@@ -1085,4 +1085,103 @@ async function init() {
     setTimeout(init, loopInterval);
   }
 }
+
+// Popup functionality
+const showPopup = (type, title, message) => {
+  const overlay = document.getElementById("popupOverlay");
+  const modal = document.getElementById("popupModal");
+  const titleEl = document.getElementById("popupTitle");
+  const messageEl = document.getElementById("popupMessage");
+  const successIcon = document.getElementById("successIcon");
+  const successCheckmark = document.getElementById("successCheckmark");
+  const errorIcon = document.getElementById("errorIcon");
+  const errorX = document.getElementById("errorX");
+
+  // Set content
+  titleEl.textContent = title;
+  messageEl.textContent = message;
+
+  // Reset modal classes
+  modal.className = "popup-modal";
+  
+  // Show/hide icons based on type
+  if (type === "success") {
+    modal.classList.add("popup-success");
+    successIcon.style.display = "block";
+    successCheckmark.style.display = "block";
+    errorIcon.style.display = "none";
+    errorX.style.display = "none";
+  } else {
+    modal.classList.add("popup-error");
+    successIcon.style.display = "none";
+    successCheckmark.style.display = "none";
+    errorIcon.style.display = "block";
+    errorX.style.display = "block";
+  }
+
+  // Show popup
+  overlay.classList.add("show");
+};
+
+const hidePopup = () => {
+  const overlay = document.getElementById("popupOverlay");
+  overlay.classList.remove("show");
+};
+
+// System control functions
+const performSystemAction = async (action, actionName) => {
+  try {
+    showPopup("success", actionName, `${actionName} in progress...`);
+    
+    const response = await fetch(`/${action}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data.status === "success") {
+      showPopup("success", actionName, data.message);
+      // Auto-hide popup after 5 seconds for successful actions
+      setTimeout(hidePopup, 5000);
+    } else {
+      showPopup("error", actionName, data.message || `${actionName} failed`);
+      // Auto-hide popup after 10 seconds for errors
+      setTimeout(hidePopup, 10000);
+    }
+  } catch (error) {
+    showPopup("error", actionName, `Network error: ${error.message}`);
+    setTimeout(hidePopup, 10000);
+  }
+};
+
+// System control button event listeners
+const rebootBtn = document.getElementById("btnReboot");
+const shutdownBtn = document.getElementById("btnShutdown");
+
+if (rebootBtn) {
+  rebootBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to reboot the system?")) {
+      performSystemAction("reboot", "Reboot");
+    }
+  });
+}
+
+if (shutdownBtn) {
+  shutdownBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to shutdown the system?")) {
+      performSystemAction("shutdown", "Shutdown");
+    }
+  });
+}
+
+// Close popup when clicking outside of it
+document.getElementById("popupOverlay").addEventListener("click", (e) => {
+  if (e.target.id === "popupOverlay") {
+    hidePopup();
+  }
+});
+
 init();

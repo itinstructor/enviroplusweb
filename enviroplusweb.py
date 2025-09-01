@@ -9,7 +9,7 @@ URL: https://gitlab.com/idotj/enviroplusweb
 License: GNU
 """
 
-from flask import Flask, render_template, request, redirect, abort
+from flask import Flask, render_template, request, redirect, abort, jsonify
 import RPi.GPIO as GPIO
 import st7735
 import struct
@@ -581,9 +581,9 @@ def reboot():
 
     try:
         subprocess.Popen(["sudo", "reboot"])
-        return "<html><body><h2>Rebooting...</h2></body></html>"
+        return jsonify({"status": "success", "message": "Rebooting system..."}), 200
     except Exception as e:
-        return f"<html><body><h2>Reboot failed: {e}</h2></body></html>", 500
+        return jsonify({"status": "error", "message": f"Reboot failed: {e}"}), 500
 
 
 @app.route("/shutdown", methods=["POST"])
@@ -592,9 +592,9 @@ def shutdown():
 
     try:
         subprocess.Popen(["sudo", "shutdown", "now"])
-        return "<html><body><h2>Shutting down...</h2></body></html>"
+        return jsonify({"status": "success", "message": "Shutting down system..."}), 200
     except Exception as e:
-        return f"<html><body><h2>Shutdown failed: {e}</h2></body></html>", 500
+        return jsonify({"status": "error", "message": f"Shutdown failed: {e}"}), 500
 
 
 @app.errorhandler(401)

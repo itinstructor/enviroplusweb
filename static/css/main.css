@@ -588,3 +588,61 @@ html[data-theme="dark"] #iconColorThemeDark {
   align-items: center;
   margin: 20vh 2rem;
 }
+
+/* Popup Modal */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-overlay.show {
+  display: flex;
+}
+
+.popup-modal {
+  background-color: var(--color-btn-background);
+  color: var(--color-text);
+  border: 2px solid var(--color-btn-border);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  min-width: 300px;
+  transition: all 500ms linear;
+}
+
+.popup-modal h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.popup-modal p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.popup-modal .popup-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+.popup-success .popup-icon {
+  color: #10b981;
+}
+
+.popup-error .popup-icon {
+  color: #ef4444;
+}
