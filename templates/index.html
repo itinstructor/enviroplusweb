@@ -125,20 +125,6 @@
           </select>
         </div>
 
-        {% if shutdown_button %}
-        <!-- Shutdown Button -->
-        <div class="header-shutdown" style="margin-left:auto;">
-          <form method="POST" action="/shutdown" style="display:inline;">
-            <button type="submit" id="btnShutdown" title="{{ i18n.shutdownBtn.title }}">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="button-icon-svg">
-                <path d="M8 1a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-1.5 0v-6.5A.75.75 0 0 1 8 1zm0 13a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0 1A7 7 0 1 1 8 0a7 7 0 0 1 0 14z"/>
-              </svg>
-              <span>{{ i18n.shutdownBtn.title }}</span>
-            </button>
-          </form>
-        </div>
-        {% endif %}
-        
         {% if fan_gpio %}
         <!-- Fan speed -->
         <div class="header-fanGpio">
@@ -272,6 +258,19 @@
             </svg>
           </a>
         </div>
+        {% if shutdown_button %}
+        <!-- Shutdown Button -->
+        <div class="header-shutdown" style="margin-left:auto;">
+          <form method="POST" action="/shutdown" style="display:inline;">
+            <button type="submit" id="btnShutdown" title="{{ i18n.shutdownBtn.title }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="button-icon-svg">
+                <path d="M8 1a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-1.5 0v-6.5A.75.75 0 0 1 8 1zm0 13a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0 1A7 7 0 1 1 8 0a7 7 0 0 1 0 14z"/>
+              </svg>
+              <span>{{ i18n.shutdownBtn.title }}</span>
+            </button>
+          </form>
+        </div>
+        {% endif %}
       </div>
     </header>
 
