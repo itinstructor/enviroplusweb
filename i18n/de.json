@@ -43,6 +43,7 @@
     },
     "noise": "Lärm",
     "gas": "Gase",
-    "particulateMatter": "Feinstaub"
+    "particulateMatter": "Feinstaub",
+    "shutdownBtn": { "title": "Herunterfahren" }
   }
 }

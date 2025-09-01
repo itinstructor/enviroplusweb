@@ -43,6 +43,7 @@
     },
     "noise": "Soroll",
     "gas": "Gasos",
-    "particulateMatter": "Partícules en suspensió"
+    "particulateMatter": "Partícules en suspensió",
+    "shutdownBtn": { "title": "Aturar" }
   }
 }

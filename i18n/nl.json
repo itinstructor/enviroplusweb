@@ -43,6 +43,7 @@
     },
     "noise": "Geluid",
     "gas": "Gassen",
-    "particulateMatter": "Fijnstof"
+    "particulateMatter": "Fijnstof",
+    "shutdownBtn": { "title": "Afsluiten" }
   }
 }

@@ -43,6 +43,7 @@
     },
     "noise": "Bruit",
     "gas": "Gaz",
-    "particulateMatter": "Particules en suspension"
+    "particulateMatter": "Particules en suspension",
+    "shutdownBtn": { "title": "Arrêter" }
   }
 }
