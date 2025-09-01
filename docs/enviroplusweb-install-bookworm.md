@@ -143,7 +143,7 @@ Open the file `config.py` in the folder `enviroplusweb`. You will find the follo
   HUMI_COMPENSATION_FACTOR = 1.40
   ```
 
-- Modifies the sum factor on the values read by the barometric pressure sensor. pres_comp_calc.py will calculate the factor based on altitude:
+- Modifies the sum factor on the values read by the barometric pressure sensor. pres_comp_calc.py will calculate the sum factor based on altitude:
 
   ```python
   PRES_COMPENSATION_FACTOR = 0.00
