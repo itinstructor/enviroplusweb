@@ -1,3 +1,10 @@
+v4.1.2 - 31-08-25
+- Add shutdown and restart button to webpage
+
+v4.1.1 - 24-08-25
+- Add pres_comp_calc.py for calculating altitude compensation
+- Add install-service.sh and uinstall-service.sh files to run enviroplusweb as a service
+
 v4.1.0 - 15/08/2025
 - Show barometric pressure in "inHg" for imperial system
 - Add compensation factor for barometric pressure sensor

@@ -4,12 +4,12 @@
 Project: Enviro Plus Web
 Description: Web interface for Enviro and Enviro+ sensor board plugged into a Raspberry Pi
 Author: i.j
-Version: 4.1.1
+Version: 4.1.2
 URL: https://gitlab.com/idotj/enviroplusweb
 License: GNU
 """
 
-from flask import Flask, render_template, request, redirect, abort
+from flask import Flask, render_template, request, redirect, abort, jsonify
 import RPi.GPIO as GPIO
 import st7735
 import struct
@@ -40,7 +40,7 @@ from config import Config
 
 print("")
 print("************************")
-print(" Enviro plus web v4.1.1 ")
+print(" Enviro plus web v4.1.2 ")
 print("************************")
 print("")
 
@@ -556,6 +556,8 @@ def main_page(language):
         system_units=Config.SYSTEM_UNITS,
         browser_updates=Config.BROWSER_UPDATES_WHILE_ACTIVE,
         openweather=Config.OPENWEATHER_ENABLED,
+        reboot_button=Config.REBOOT_BUTTON_ENABLED,  # This controls reboot button visibility
+        shutdown_button=Config.SHUTDOWN_BUTTON_ENABLED,  # This controls button visibility
     )
 
 
@@ -571,6 +573,28 @@ def readings():
 def graph():
     arg = request.args.get("time", "")
     return load_downsample_readings(arg)
+
+
+@app.route("/reboot", methods=["POST"])
+def reboot():
+    import subprocess
+
+    try:
+        subprocess.Popen(["sudo", "reboot"])
+        return jsonify({"status": "success", "message": "Rebooting system..."}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"Reboot failed: {e}"}), 500
+
+
+@app.route("/shutdown", methods=["POST"])
+def shutdown():
+    import subprocess
+
+    try:
+        subprocess.Popen(["sudo", "shutdown", "now"])
+        return jsonify({"status": "success", "message": "Shutting down system..."}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"Shutdown failed: {e}"}), 500
 
 
 @app.errorhandler(401)

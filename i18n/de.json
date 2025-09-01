@@ -43,6 +43,8 @@
     },
     "noise": "Lärm",
     "gas": "Gase",
-    "particulateMatter": "Feinstaub"
+    "particulateMatter": "Feinstaub",
+    "rebootBtn": { "title": "Neustart" },
+    "shutdownBtn": { "title": "Herunterfahren" }
   }
 }

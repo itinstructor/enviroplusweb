@@ -43,6 +43,8 @@
     },
     "noise": "Bruit",
     "gas": "Gaz",
-    "particulateMatter": "Particules en suspension"
+    "particulateMatter": "Particules en suspension",
+    "rebootBtn": { "title": "Redémarrer" },
+    "shutdownBtn": { "title": "Arrêter" }
   }
 }

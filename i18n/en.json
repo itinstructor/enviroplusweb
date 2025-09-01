@@ -43,6 +43,8 @@
     },
     "noise": "Noise",
     "gas": "Gases",
-    "particulateMatter": "Particulate matter"
+    "particulateMatter": "Particulate matter",
+    "rebootBtn": { "title": "Reboot" },
+    "shutdownBtn": { "title": "Shutdown" }
   }
 }
