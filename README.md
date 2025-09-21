@@ -12,13 +12,14 @@ Runs thanks to [Flask](https://flask.palletsprojects.com) and [Chart.js](https:/
 
 ## 📋 Table of contents
 
-- [📖 User guide](#-user-guide)
-  - [Raspberry Pi OS Bookworm](#raspberry-pi-os-bookworm)
-  - [Raspberry Pi OS Bullseye (legacy)](#raspberry-pi-os-bullseye-legacy)
-- [🚀 Improve me](#-improve-me)
-- [⚖️ License](#️-license)
-- [💬 FAQ](#-faq)
-  - [Other answered questions](#other-answered-questions)
+- [🌿 Enviro Plus Web](#-enviro-plus-web)
+  - [📋 Table of contents](#-table-of-contents)
+  - [📖 User guide](#-user-guide)
+    - [Raspberry Pi OS Bookworm](#raspberry-pi-os-bookworm)
+    - [Raspberry Pi OS Bullseye (legacy)](#raspberry-pi-os-bullseye-legacy)
+  - [🚀 Improve me](#-improve-me)
+  - [⚖️ License](#️-license)
+  - [💬 FAQ](#-faq)
 
 ## 📖 User guide
 
@@ -72,16 +73,6 @@ GNU Affero General Public License v3.0
   
   Once done, you can reboot your Raspberry Pi and the old readings will appear in your graphs.
 
-- ### I got an error related with 'adau7002' while running Enviroplusweb
-
-  When I connect a display via HDMI to the Raspberry Pi Zero W, this error shows in the terminal:  
-  `ValueError: No input device matching 'adau7002'`  
-  Simply disconnecting the HDMI cable solves the problem.
-
-  Another case where this error occurs, is after a reboot at application launch (no display connected).  
-  It seems that the library that manages the audio is not very reliable. There is a [thread](https://github.com/pimoroni/enviroplus-python/issues/11) about this issue that is still open.  
-  At the moment the quickest solution is to reboot your Raspberry Pi again.
-
 - ### Raspberry Pi is running other services at localhost
 
   You can change the port to avoid any conflict with other applications. In that case edit the file `config.py` and find this line:
@@ -131,7 +122,3 @@ GNU Affero General Public License v3.0
 
   Reboot and check again typing the first command to see if the feature is enabled or not.
 
-### Other answered questions
-
-Check the [closed issues](https://gitlab.com/idotj/enviroplusweb/-/issues/?sort=created_date&state=closed&first_page_size=20), you might find your question there.  
-If nothing matches with your problem, check the [open issues](https://gitlab.com/idotj/enviroplusweb/-/issues/?sort=created_date&state=opened&first_page_size=20) or feel free to create a new one.
