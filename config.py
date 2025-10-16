@@ -4,12 +4,13 @@
 Project: Enviro Plus Web
 Description: Web interface for Enviro and Enviro+ sensor board plugged into a Raspberry Pi
 Author: i.j
-Version: 4.1.2
+Version: 4.2.0
 URL: https://gitlab.com/idotj/enviroplusweb
 License: GNU
 """
 
-# Please check the documentation to learn more about each setting and available parameters
+
+# Check the documentation to learn more about each setting and available parameters
 class Config:
     HOST = "0.0.0.0"
     HOST_PORT = 8080
@@ -25,14 +26,12 @@ class Config:
     GAS_SENSOR = True
     PARTICULATE_SENSOR = True
     BROWSER_UPDATES_WHILE_ACTIVE = True
+    REBOOT_BUTTON_ENABLED = True
+    SHUTDOWN_BUTTON_ENABLED = True
+    OPENWEATHER_ENABLED = False
     LOCATION_LATITUDE = ""
     LOCATION_LONGITUDE = ""
-    OPENWEATHER_ENABLED = False
     OPENWEATHER_API_KEY = ""
     OPENWEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather"
     OPENWEATHER_CALL_INTERVAL = 600
     DEBUG_LOGGING_ENABLED = False
-    # Show reboot button in web UI
-    REBOOT_BUTTON_ENABLED = True
-    # Show shutdown button in web UI
-    SHUTDOWN_BUTTON_ENABLED = True

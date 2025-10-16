@@ -23,6 +23,12 @@
       "titleLight": "Tema claro",
       "titleDark": "Tema oscuro"
     },
+    "rebootBtn": {
+      "title": "Reiniciar"
+    },
+    "shutdownBtn": {
+      "title": "Apagar"
+    },
     "gitlabBtn": {
       "title": "Enviro Plus Web repo en GitLab"
     },
@@ -43,8 +49,17 @@
     },
     "noise": "Ruido",
     "gas": "Gases",
-    "particulateMatter": "Partículas en suspensión",
-    "rebootBtn": { "title": "Reiniciar" },
-    "shutdownBtn": { "title": "Apagar" }
+    "particulateMatter": "Particulate matter",
+    "dialog": {
+      "title": "Acciones del sistema",
+      "closeBtn": {
+        "title": "Cerrar dialogo de acciones del sistema"
+      },
+      "request": "Conexión en curso...",
+      "reboot": "Reiniciando...",
+      "shutdown": "Apagando...",
+      "error1": "Lo siento, algo no ha salido bien...",
+      "error2": "Verifica la consola para mas información"
+    }
   }
 }

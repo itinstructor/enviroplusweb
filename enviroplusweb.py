@@ -4,7 +4,7 @@
 Project: Enviro Plus Web
 Description: Web interface for Enviro and Enviro+ sensor board plugged into a Raspberry Pi
 Author: i.j
-Version: 4.1.2
+Version: 4.2.0
 URL: https://gitlab.com/idotj/enviroplusweb
 License: GNU
 """
@@ -40,7 +40,7 @@ from config import Config
 
 print("")
 print("************************")
-print(" Enviro plus web v4.1.2 ")
+print(" Enviro plus web v4.2.0 ")
 print("************************")
 print("")
 
@@ -228,9 +228,7 @@ def fetch_weather_data(url):
         if response.status_code == 200:
             return response.json()
         else:
-            logging.error(
-                f"Error fetching weather API data: {response.status_code}"
-            )
+            logging.error(f"Error fetching weather API data: {response.status_code}")
             return {"error": f"Received error code {response.status_code}"}
 
     except requests.exceptions.Timeout:
@@ -328,9 +326,7 @@ def get_particles_readings():
             particles = pms5003.read()
             break
         except (RuntimeError, struct.error) as e:
-            logging.error(
-                "Particle read failed: %s - %s", type(e).__name__, str(e)
-            )
+            logging.error("Particle read failed: %s - %s", type(e).__name__, str(e))
             if not run_flag:
                 raise e
             pms5003.reset()
@@ -436,9 +432,7 @@ def load_downsample_readings(arg):
     files_to_check = [now - timedelta(days=i) for i in range(days_to_check)]
 
     for file_date in files_to_check:
-        file_path = os.path.join(
-            app_data_folder, file_date.strftime("%Y-%m-%d.json")
-        )
+        file_path = os.path.join(app_data_folder, file_date.strftime("%Y-%m-%d.json"))
 
         if os.path.exists(file_path):
             with open(file_path, "r", encoding="utf-8") as f:
@@ -458,9 +452,7 @@ def load_downsample_readings(arg):
                 except json.JSONDecodeError:
                     logging.error(f"Error reading {file_path}, skipping")
 
-    readings.sort(
-        key=lambda x: datetime.strptime(x["time"], "%a %b %d %H:%M:%S %Y")
-    )
+    readings.sort(key=lambda x: datetime.strptime(x["time"], "%a %b %d %H:%M:%S %Y"))
 
     # Downsample if max_readings is set
     if max_readings and len(readings) > max_readings:

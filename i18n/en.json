@@ -23,6 +23,12 @@
       "titleLight": "Light theme",
       "titleDark": "Dark theme"
     },
+    "rebootBtn": {
+      "title": "Reboot"
+    },
+    "shutdownBtn": {
+      "title": "Shutdown"
+    },
     "gitlabBtn": {
       "title": "Enviro Plus Web repo in GitLab"
     },
@@ -44,7 +50,16 @@
     "noise": "Noise",
     "gas": "Gases",
     "particulateMatter": "Particulate matter",
-    "rebootBtn": { "title": "Reboot" },
-    "shutdownBtn": { "title": "Shutdown" }
+    "dialog": {
+      "title": "System action",
+      "closeBtn": {
+        "title": "Close system action dialog"
+      },
+      "request": "Processing request...",
+      "reboot": "Reboot in progress...",
+      "shutdown": "Shutdown in progress...",
+      "error1": "Sorry, something went wrong...",
+      "error2": "Check the console for more information"
+    }
   }
 }

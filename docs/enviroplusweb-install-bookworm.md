@@ -143,7 +143,7 @@ Open the file `config.py` in the folder `enviroplusweb`. You will find the follo
   HUMI_COMPENSATION_FACTOR = 1.40
   ```
 
-- Modifies the sum factor on the values read by the barometric pressure sensor. pres_comp_calc.py will calculate the sum factor based on altitude:
+- Modifies the sum factor on the values read by the barometric pressure sensor. Use the tool `pres_comp_calc.py` in the `/tools` folder to calculate the sum factor based on your altitude:
 
   ```python
   PRES_COMPENSATION_FACTOR = 0.00
@@ -167,22 +167,34 @@ Open the file `config.py` in the folder `enviroplusweb`. You will find the follo
   BROWSER_UPDATES_WHILE_ACTIVE = True
   ```
 
-- Set the latitude of your location (required to enable the Openweather feature):
+- Show a button in the header to reboot your device:
 
   ```python
-  LOCATION_LATITUDE = ''
+  REBOOT_BUTTON_ENABLED = True
   ```
 
-- Set the longitude of your location (required to enable the Openweather feature):
+- Show a button in the header to shutdown your device:
 
   ```python
-  LOCATION_LONGITUDE = ''
+  SHUTDOWN_BUTTON_ENABLED = True
   ```
 
 - Enables reading of external Openweather data such as wind direction and wind speed (you need an API key for this feature to work):
 
   ```python
   OPENWEATHER_ENABLED = False
+  ```
+
+- Set the latitude of your location (required for Openweather if enabled):
+
+  ```python
+  LOCATION_LATITUDE = ''
+  ```
+
+- Set the longitude of your location (required for Openweather if enabled):
+
+  ```python
+  LOCATION_LONGITUDE = ''
   ```
 
 - Set your generated API key from Openweathermap.org:
@@ -209,18 +221,6 @@ Open the file `config.py` in the folder `enviroplusweb`. You will find the follo
   DEBUG_LOGGING_ENABLED = False
   ```
 
-- Enable/Disable Reboot button in web ui
-  
-  ```python
-  REBOOT_BUTTON_ENABLED = True
-  ```
-
-- Enable/Disable Shutdown button in web ui
-
-  ```python
-  SHUTDOWN_BUTTON_ENABLED = True
-  ```
-
 ### Run
 
 To run the app, be sure to be in the folder `enviroplusweb` and type:
@@ -239,29 +239,13 @@ source ~/.virtualenvs/enviroplusweb/bin/activate
 
 ### Extra setup
 
-Maybe you want to run Enviro Plus Web automatically at every boot, then just type in the terminal:
-
-```terminal
-crontab -e
-```
-
-Add a new entry at the bottom with `@reboot` to specify that you want to run the command every time you restart your Raspberry Pi. Remember to replace in the path your HOSTNAME (if your default hostname is not 'pi').
-
-```terminal
-@reboot sleep 20 && /bin/bash -c 'cd /home/pi/enviroplusweb && source ~/.virtualenvs/enviroplusweb/bin/activate && sudo ~/.virtualenvs/enviroplusweb/bin/python /home/pi/enviroplusweb/enviroplusweb.py >> /home/pi/enviroplusweb/enviroplusweb.log 2>&1'
-```
-
-### Run as Service
-
-You can run enviroplusweb as a service that automatically starts on reboot.
-
-Install enviroplusweb service:
+You may want to launch Enviro Plus Web on every reboot. To do so, go to the application folder and type this command to run it as a service:
 
 ```terminal
 sudo bash install-service.sh
 ```
 
-Uninstall enviroplusweb service:
+And when you no longer need it, uninstall it typing:
 
 ```terminal
 sudo bash uninstall-service.sh

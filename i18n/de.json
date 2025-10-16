@@ -23,6 +23,12 @@
       "titleLight": "Tagmodus",
       "titleDark": "Nachtmodus"
     },
+    "rebootBtn": {
+      "title": "Neustart"
+    },
+    "shutdownBtn": {
+      "title": "Herunterfahren"
+    },
     "gitlabBtn": {
       "title": "Enviro Plus Web repo in GitLab"
     },
@@ -43,8 +49,17 @@
     },
     "noise": "Lärm",
     "gas": "Gase",
-    "particulateMatter": "Feinstaub",
-    "rebootBtn": { "title": "Neustart" },
-    "shutdownBtn": { "title": "Herunterfahren" }
+    "particulateMatter": "Particulate matter",
+    "dialog": {
+      "title": "Systemaktion",
+      "closeBtn": {
+        "title": "Systemaktionsdialog schließen"
+      },
+      "request": "Bearbeitung der Anfrage...",
+      "reboot": "Neustart läuft...",
+      "shutdown": "Herunterfahren läuft...",
+      "error1": "Entschuldigung, etwas ist schiefgelaufen....",
+      "error2": "Weitere Informationen finden Sie in der Konsole"
+    }
   }
 }

@@ -12,14 +12,13 @@ Runs thanks to [Flask](https://flask.palletsprojects.com) and [Chart.js](https:/
 
 ## 📋 Table of contents
 
-- [🌿 Enviro Plus Web](#-enviro-plus-web)
-  - [📋 Table of contents](#-table-of-contents)
-  - [📖 User guide](#-user-guide)
-    - [Raspberry Pi OS Bookworm](#raspberry-pi-os-bookworm)
-    - [Raspberry Pi OS Bullseye (legacy)](#raspberry-pi-os-bullseye-legacy)
-  - [🚀 Improve me](#-improve-me)
-  - [⚖️ License](#️-license)
-  - [💬 FAQ](#-faq)
+- [📖 User guide](#-user-guide)
+  - [Raspberry Pi OS Bookworm](#raspberry-pi-os-bookworm)
+  - [Raspberry Pi OS Bullseye (legacy)](#raspberry-pi-os-bullseye-legacy)
+- [🚀 Improve me](#-improve-me)
+- [⚖️ License](#️-license)
+- [💬 FAQ](#-faq)
+  - [Other answered questions](#other-answered-questions)
 
 ## 📖 User guide
 
@@ -35,7 +34,13 @@ Choose the tutorial that matches your Raspberry Pi OS:
 
 ## 🚀 Improve me
 
-Feel free to add your features and improvements.
+Feel free to add your features and improvements.  
+In the file [CONTRIBUTING.md](./CONTRIBUTING.md) you have detailed information that explains how to collaborate with this project.
+
+## 👥 Contributors
+
+Contributions made by users on the Enviro Plus Web by merge requests:  
+[William A Loring](https://gitlab.com/itinstructor1), [Hagoort](https://gitlab.com/Hagoort), [Alex](https://gitlab.com/alexlarioza), [Musa Ecer](https://gitlab.com/Tospaa), [Daniel Fr](https://gitlab.com/freezingDaniel), [i.j](https://gitlab.com/idotj)
 
 ## ⚖️ License
 
@@ -72,6 +77,16 @@ GNU Affero General Public License v3.0
   Edit each JSON file and add the character `[` at the beginning of the file. Do the same thing, including the character `]` at the end of the file. To finish, just add a comma `,` at the end of each line/reading in the list, which is after the character `}` (remember that the last reading doesn't need a comma).  
   
   Once done, you can reboot your Raspberry Pi and the old readings will appear in your graphs.
+
+- ### I got an error related with 'adau7002' while running Enviroplusweb
+
+  When I connect a display via HDMI to the Raspberry Pi Zero W, this error shows in the terminal:  
+  `ValueError: No input device matching 'adau7002'`  
+  Simply disconnecting the HDMI cable solves the problem.
+
+  Another case where this error occurs, is after a reboot at application launch (no display connected).  
+  It seems that the library that manages the audio is not very reliable. There is a [thread](https://github.com/pimoroni/enviroplus-python/issues/11) about this issue that is still open.  
+  At the moment the quickest solution is to reboot your Raspberry Pi again.
 
 - ### Raspberry Pi is running other services at localhost
 
@@ -122,3 +137,7 @@ GNU Affero General Public License v3.0
 
   Reboot and check again typing the first command to see if the feature is enabled or not.
 
+### Other answered questions
+
+Check the [closed issues](https://gitlab.com/idotj/enviroplusweb/-/issues/?sort=created_date&state=closed&first_page_size=20), you might find your question there.  
+If nothing matches with your problem, check the [open issues](https://gitlab.com/idotj/enviroplusweb/-/issues/?sort=created_date&state=opened&first_page_size=20) or feel free to create a new one.

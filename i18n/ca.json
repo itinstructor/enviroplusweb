@@ -23,6 +23,12 @@
       "titleLight": "Tema clar",
       "titleDark": "Tema fosc"
     },
+    "rebootBtn": {
+      "title": "Reiniciar"
+    },
+    "shutdownBtn": {
+      "title": "Apagar"
+    },
     "gitlabBtn": {
       "title": "Enviro Plus Web repo en GitLab"
     },
@@ -43,8 +49,17 @@
     },
     "noise": "Soroll",
     "gas": "Gasos",
-    "particulateMatter": "Partícules en suspensió",
-    "rebootBtn": { "title": "Reiniciar" },
-    "shutdownBtn": { "title": "Aturar" }
+    "particulateMatter": "Particulate matter",
+    "dialog": {
+      "title": "Accions del sistema",
+      "closeBtn": {
+        "title": "Tancar el dialeg d'accions del sistema"
+      },
+      "request": "Connexió en curs...",
+      "reboot": "Reiniciant...",
+      "shutdown": "Apagant...",
+      "error1": "Ho sento, alguna cosa no ha sortit bé...",
+      "error2": "Verifica la consola per a més informació"
+    }
   }
 }

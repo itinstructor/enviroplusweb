@@ -2,7 +2,7 @@
  * Enviro Plus Web
  * @description: Web interface for Enviro and Enviro+ sensor board plugged into a Raspberry Pi
  * @author idotj
- * @version 4.1.0
+ * @version 4.2.0
  * @url https://gitlab.com/idotj/enviroplusweb
  * @license GNU AGPLv3
  */
@@ -1086,85 +1086,58 @@ async function init() {
   }
 }
 
-// Popup functionality
-const showPopup = (type, title, message) => {
-  const overlay = document.getElementById("popupOverlay");
-  const modal = document.getElementById("popupModal");
-  const titleEl = document.getElementById("popupTitle");
-  const messageEl = document.getElementById("popupMessage");
-  const successIcon = document.getElementById("successIcon");
-  const successCheckmark = document.getElementById("successCheckmark");
-  const errorIcon = document.getElementById("errorIcon");
-  const errorX = document.getElementById("errorX");
-
-  // Set content
-  titleEl.textContent = title;
-  messageEl.textContent = message;
-
-  // Reset modal classes
-  modal.className = "popup-modal";
-  
-  // Show/hide icons based on type
-  if (type === "success") {
-    modal.classList.add("popup-success");
-    successIcon.style.display = "block";
-    successCheckmark.style.display = "block";
-    errorIcon.style.display = "none";
-    errorX.style.display = "none";
-  } else {
-    modal.classList.add("popup-error");
-    successIcon.style.display = "none";
-    successCheckmark.style.display = "none";
-    errorIcon.style.display = "block";
-    errorX.style.display = "block";
+// Dialog/Modal functionality
+const dialog = document.getElementById("mainDialog");
+const showDialog = (type) => {
+  const validTypes = ["request", "reboot", "shutdown", "error"];
+  if (validTypes.includes(type)) {
+    dialog.dataset.type = type;
   }
 
-  // Show popup
-  overlay.classList.add("show");
+  dialog.showModal();
 };
 
-const hidePopup = () => {
-  const overlay = document.getElementById("popupOverlay");
-  overlay.classList.remove("show");
-};
+document.getElementById("closeDialogBtn").addEventListener("click", () => {
+  dialog.close();
+});
 
 // System control functions
-const performSystemAction = async (action, actionName) => {
+const performSystemAction = async (action) => {
   try {
-    showPopup("success", actionName, `${actionName} in progress...`);
-    
-    const response = await fetch(`/${action}`, {
+    showDialog("request");
+
+    const fetchPromise = await fetch(`/${action}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
     });
+    const delay = new Promise((resolve) => setTimeout(resolve, 3000));
+    const [response] = await Promise.all([fetchPromise, delay]);
 
     const data = await response.json();
 
     if (response.ok && data.status === "success") {
-      showPopup("success", actionName, data.message);
-      // Auto-hide popup after 5 seconds for successful actions
-      setTimeout(hidePopup, 5000);
+      showDialog(action);
+      setTimeout(() => dialog.close(), 10000);
     } else {
-      showPopup("error", actionName, data.message || `${actionName} failed`);
-      // Auto-hide popup after 10 seconds for errors
-      setTimeout(hidePopup, 10000);
+      showDialog("error");
+      console.error(data.message);
     }
   } catch (error) {
-    showPopup("error", actionName, `Network error: ${error.message}`);
-    setTimeout(hidePopup, 10000);
+    showDialog("error");
+    console.error(`Network error: ${error.message}`);
   }
 };
 
 // System control button event listeners
-const rebootBtn = document.getElementById("btnReboot");
-const shutdownBtn = document.getElementById("btnShutdown");
+const rebootBtn = document.getElementById("rebootBtn");
+const shutdownBtn = document.getElementById("shutdownBtn");
 
 if (rebootBtn) {
   rebootBtn.addEventListener("click", () => {
     if (confirm("Are you sure you want to reboot the system?")) {
-      performSystemAction("reboot", "Reboot");
+      performSystemAction("reboot");
     }
   });
 }
@@ -1172,16 +1145,9 @@ if (rebootBtn) {
 if (shutdownBtn) {
   shutdownBtn.addEventListener("click", () => {
     if (confirm("Are you sure you want to shutdown the system?")) {
-      performSystemAction("shutdown", "Shutdown");
+      performSystemAction("shutdown");
     }
   });
 }
-
-// Close popup when clicking outside of it
-document.getElementById("popupOverlay").addEventListener("click", (e) => {
-  if (e.target.id === "popupOverlay") {
-    hidePopup();
-  }
-});
 
 init();

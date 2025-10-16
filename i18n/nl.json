@@ -23,6 +23,12 @@
       "titleLight": "Licht thema",
       "titleDark": "Donker thema"
     },
+    "rebootBtn": {
+      "title": "Herstart"
+    },
+    "shutdownBtn": {
+      "title": "Uitschakelen"
+    },
     "gitlabBtn": {
       "title": "Enviro Plus Web repo in GitLab"
     },
@@ -43,8 +49,17 @@
     },
     "noise": "Geluid",
     "gas": "Gassen",
-    "particulateMatter": "Fijnstof",
-    "rebootBtn": { "title": "Herstart" },
-    "shutdownBtn": { "title": "Afsluiten" }
+    "particulateMatter": "Particulate matter",
+    "dialog": {
+      "title": "Systeemactie",
+      "closeBtn": {
+        "title": "Sluit dialoogvenster systeemactie"
+      },
+      "request": "Verwerking van verzoek...",
+      "reboot": "Herstart bezig...",
+      "shutdown": "Uitschakeling bezig...",
+      "error1": "Sorry, er is iets misgegaan...",
+      "error2": "Raadpleeg de console voor meer informatie."
+    }
   }
 }

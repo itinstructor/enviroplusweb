@@ -5,12 +5,12 @@ After=network.target
 [Service]
 Type=simple
 User=pi
-ExecStart=/home/pi/.virtualenvs/enviroplusweb/bin/python /home/pi/enviroplusweb/enviroplusweb.py
 WorkingDirectory=/home/pi/enviroplusweb/
+ExecStart=/bin/bash -c '/home/pi/.virtualenvs/enviroplusweb/bin/python /home/pi/enviroplusweb/enviroplusweb.py >> /home/pi/enviroplusweb/enviroplusweb.log 2>&1'
 Restart=on-failure
-Restart=always
 RestartSec=10
+StartLimitIntervalSec=500
+StartLimitBurst=3
 
 [Install]
 WantedBy=multi-user.target
-

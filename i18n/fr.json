@@ -23,6 +23,12 @@
       "titleLight": "Thème clair",
       "titleDark": "Thème sombre"
     },
+    "rebootBtn": {
+      "title": "Redémarrer"
+    },
+    "shutdownBtn": {
+      "title": "Éteindre"
+    },
     "gitlabBtn": {
       "title": "Enviro Plus Web repo sur GitLab"
     },
@@ -43,8 +49,17 @@
     },
     "noise": "Bruit",
     "gas": "Gaz",
-    "particulateMatter": "Particules en suspension",
-    "rebootBtn": { "title": "Redémarrer" },
-    "shutdownBtn": { "title": "Arrêter" }
+    "particulateMatter": "Particulate matter",
+    "dialog": {
+      "title": "Actions du système",
+      "closeBtn": {
+        "title": "Fermer le dialogue d'action du système"
+      },
+      "request": "Traitement de la requête...",
+      "reboot": "Redémarrage en cours...",
+      "shutdown": "Arrêt en cours...",
+      "error1": "Désolé, une erreur s'est produite...",
+      "error2": "Vérifier la console pour plus d'informations"
+    }
   }
 }

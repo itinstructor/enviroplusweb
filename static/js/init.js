@@ -2,7 +2,7 @@
  * Enviro Plus Web
  * @description: Web interface for Enviro and Enviro+ sensor board plugged into a Raspberry Pi
  * @author idotj
- * @version 4.1.0
+ * @version 4.2.0
  * @url https://gitlab.com/idotj/enviroplusweb
  * @license GNU AGPLv3
  */

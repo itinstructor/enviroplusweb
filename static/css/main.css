@@ -1,4 +1,4 @@
-/* Enviro Plus Web v4.1.0 */
+/* Enviro Plus Web v4.2.0 */
 /* More info at: */
 /* https://gitlab.com/idotj/enviroplusweb */
 
@@ -36,6 +36,7 @@
   --color-pm-1: #8c796f;
   --color-pm-25: #715f54;
   --color-pm-10: #57473a;
+  --color-error: #ef4444;
 }
 :root[data-theme="light"] {
   color-scheme: light;
@@ -185,11 +186,11 @@ button,
   display: flex;
   width: 100%;
   height: 3rem;
-  position: sticky;
+  position: fixed;
   top: 0;
   background-color: var(--color-btn-background);
   border-bottom: 1px solid var(--color-header-border);
-  z-index: 1;
+  z-index: 5;
   transition: background-color 500ms linear, border-color 500ms linear;
 }
 .header-logo {
@@ -197,6 +198,7 @@ button,
   align-items: center;
   gap: 0.5rem;
   margin: 0 auto 0 1rem;
+  padding: 0.25rem;
   border: none !important;
 }
 .header-title {
@@ -255,27 +257,27 @@ button,
   max-height: 1.75rem;
   margin-right: 1rem;
 }
-.button-icon-svg {
+.icon-svg-btn {
   max-width: 1.25rem;
   max-height: 1.25rem;
   width: 100%;
   height: auto;
   stroke-width: 0.02rem;
 }
-.button-icon-svg + span {
+.icon-svg-btn + span {
   margin: 0 0.25rem 0 0.5rem;
 }
 html[data-theme="light"] #iconColorThemeLight,
 html[data-theme="dark"] #iconColorThemeDark {
   display: none;
 }
-
-/* Header - Mobile version */
 @media screen and (min-width: 1560px) {
   .header-menu-hamburger {
     display: none;
   }
 }
+
+/* Header - Mobile version */
 .menu-hamburger {
   width: 2.25rem;
   height: 2.25rem;
@@ -333,7 +335,7 @@ html[data-theme="dark"] #iconColorThemeDark {
   }
 }
 
-@media screen and (max-width: 1559px) {
+@media screen and (max-width: 1640px) {
   .header-title {
     font-size: 1.5rem;
   }
@@ -356,7 +358,7 @@ html[data-theme="dark"] #iconColorThemeDark {
   .header-menu-settings.menu-settings-open {
     width: 66%;
     max-width: 14rem;
-    height: 100%;
+    height: calc(100% - 4rem);
     visibility: visible;
     opacity: 1;
     overflow-y: auto;
@@ -364,7 +366,7 @@ html[data-theme="dark"] #iconColorThemeDark {
     background: var(--color-btn-background);
   }
   .header-menu-settings > div {
-    padding: 0;
+    padding: 0 !important;
     width: 100%;
     border-left: none !important;
     margin-bottom: 3rem;
@@ -372,6 +374,14 @@ html[data-theme="dark"] #iconColorThemeDark {
   .header-menu-settings > div:last-child {
     margin-bottom: 4rem;
   }
+  .header-menu-settings > div > .button {
+    margin: 0 2rem;
+  }
+}
+
+/* Main */
+main.main {
+  margin-top: 5.5rem;
 }
 
 /* Graph container */
@@ -456,14 +466,23 @@ html[data-theme="dark"] #iconColorThemeDark {
   container: graph-header / inline-size;
 }
 .graph-header h2 {
+  display: inline-flex;
   text-align: left;
   font-size: inherit;
+  align-items: center;
+  gap: 0.5rem;
   margin: 0;
+}
+.graph-header h2 sup,
+.graph-header h2 sub {
+  font-size: 0.75rem;
 }
 .graph-header-readings {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  font-weight: normal;
+  color: var(--color-text);
 }
 .graph-header-extra {
   font-size: 0.75rem;
@@ -483,7 +502,6 @@ html[data-theme="dark"] #iconColorThemeDark {
     display: none;
   }
 }
-
 .graph-body {
   position: relative;
   padding: 0 0.75rem 1.25rem 0.75rem;
@@ -492,7 +510,6 @@ html[data-theme="dark"] #iconColorThemeDark {
   width: 100%;
   display: block;
 }
-
 .graph-wind-direction .graph-body {
   display: flex;
   height: calc(100% - 6.5rem);
@@ -500,12 +517,11 @@ html[data-theme="dark"] #iconColorThemeDark {
   align-items: center;
   justify-content: center;
 }
-
 .wind-direction-arrow {
   display: flex;
   width: auto;
   height: 8rem;
-  z-index: 2;
+  z-index: 1;
   transition: transform 1s ease-in-out;
 }
 .wind-direction-arrow > svg {
@@ -549,7 +565,6 @@ html[data-theme="dark"] #iconColorThemeDark {
   left: 0;
   transform: translateY(-50%);
 }
-
 .wind-direction-compass {
   width: calc(100% - 2rem);
   height: calc(100% - 2rem);
@@ -569,6 +584,62 @@ html[data-theme="dark"] #iconColorThemeDark {
   background-size: min(2.5rem, calc(100% - 0.5rem));
 }
 
+/* Dialog/Modal */
+.dialog-container {
+  width: clamp(15rem, 40vw, 22rem);
+  padding: 1rem 2rem;
+  border: 2px solid var(--color-btn-border);
+  border-radius: 0.25rem;
+  background-color: var(--color-background);
+}
+.dialog-container::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+.dialog-container .dialog-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.dialog-container .dialog-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.dialog-container .dialog-header .close-btn > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.dialog-container .dialog-body {
+  margin-bottom: 1rem;
+}
+.dialog-container .dialog-body div[class^="dialog-content-"] {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dialog-container[data-type="request"] .dialog-body .dialog-content-request,
+.dialog-container[data-type="reboot"] .dialog-body .dialog-content-reboot,
+.dialog-container[data-type="shutdown"] .dialog-body .dialog-content-shutdown,
+.dialog-container[data-type="error"] .dialog-body .dialog-content-error {
+  display: flex !important;
+}
+.dialog-container .dialog-body div[class^="dialog-content-"] p:first-of-type {
+  font-weight: bold;
+}
+.dialog-container .dialog-info-icon,
+.dialog-container .loading-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.dialog-container[data-type="request"] .dialog-info-icon {
+  color: var(--color-text);
+}
+.dialog-container[data-type="error"] .dialog-info-icon {
+  color: var(--color-error);
+}
+
 /* a11y */
 .visually-hidden:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
@@ -586,63 +657,5 @@ html[data-theme="dark"] #iconColorThemeDark {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20vh 2rem;
-}
-
-/* Popup Modal */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.popup-overlay.show {
-  display: flex;
-}
-
-.popup-modal {
-  background-color: var(--color-btn-background);
-  color: var(--color-text);
-  border: 2px solid var(--color-btn-border);
-  border-radius: 0.5rem;
-  padding: 2rem;
-  max-width: 90%;
-  max-height: 90%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  min-width: 300px;
-  transition: all 500ms linear;
-}
-
-.popup-modal h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.popup-modal p {
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-}
-
-.popup-modal .popup-icon {
-  width: 3rem;
-  height: 3rem;
-  margin: 0 auto 1rem auto;
-  display: block;
-}
-
-.popup-success .popup-icon {
-  color: #10b981;
-}
-
-.popup-error .popup-icon {
-  color: #ef4444;
+  padding: 8rem 4rem;
 }
